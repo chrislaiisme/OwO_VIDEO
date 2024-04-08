@@ -1,0 +1,66 @@
+<!--
+<!DOCTYPE html>
+-->
+
+<title>
+	OwO VIDEO
+</title>
+
+<head>
+	<style>
+		/*PUT CSS HERE*/
+        body {
+            margin: 0px;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        #dv {
+            height: 150px;
+            margin: 0px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+        }
+        #dv2 {
+            height: 150px;
+            width: 0px;
+        }
+    </style>
+</head>
+
+<body>
+	<div id = "dv">
+		<div id = "dv2">
+		</div>
+			<img id = "pic" src="https://imgur.com/uLRT5vx.png" width=300px height=150px>
+	</div>
+</body>
+
+<script>
+	/*PUT JAVASCRIPT HERE*/
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function f() {
+        dv = document.getElementById("dv");
+        dv2 = document.getElementById("dv2");
+        w = window.getComputedStyle(dv2).getPropertyValue("width");
+        h = window.getComputedStyle(dv).getPropertyValue("height");
+        dir = -1, dir2 = -1;
+        while(true) {
+            H = window.innerHeight.toString() + "px";
+            W = (window.innerWidth-300).toString() + "px";
+            if((h === "150px") || (h === H))
+                dir = -dir;
+            if((w === "0px") || (w === W))
+                dir2 = -dir2;
+            h = (parseInt(h.substr(0, h.length-2))+dir).toString() + "px";
+            dv.style.height = h;
+            w = (parseInt(w.substr(0, w.length-2))+dir2).toString() + "px";
+            dv2.style.width = w;
+            await sleep(1);
+        }
+    }
+    f();
+</script>
